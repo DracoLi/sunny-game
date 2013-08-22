@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="InnerModern-A5" tilewidth="32" tileheight="32">
+  <image source="InnerModern-A5.png" width="256" height="512"/>
+ </tileset>
+ <tileset firstgid="129" name="InnerModern-TileB" tilewidth="32" tileheight="32">
+  <image source="InnerModern-TileB.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="385" name="newa4" tilewidth="32" tileheight="32">
+  <image source="newa4.png" width="512" height="480"/>
+ </tileset>
+ <tileset firstgid="625" name="meta_tiles" tilewidth="32" tileheight="32">
+  <image source="meta_tiles.png" width="64" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ground" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFpAAhMvBQ1ksuAACb5gOp
+  </data>
+ </layer>
+ <layer name="wall" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg4sJ2RgWE/CXgHI0LvPSD7Agn4HJLe40D2XhLwCUZMt48C/AAAFAMeFg==
+  </data>
+ </layer>
+ <layer name="Items" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBi6wJCRgcEIiI2BWByIzwDFzkLlchlx62sC4kCgfBAQBwOxMBCLAPFHoPgnIP4KVaMHFNMHYgE0sxKB/CQgTgZiZSBWAWJGIGYCYmaoWjsgbQ/ECnjc0Q+lJyCJ/QFiGaAeWTz6YKAPi9g9KB5oAACr2g7i
+  </data>
+ </layer>
+ <layer name="Items2" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBiZgIeRgeEpkH6DQ54fKP8OSL9HE/9HhNnyjLjlbgLxLSC+TYQ56OAlEL8C4tdk6P0JxL+A+DcZeskBAHv+DSQ=
+  </data>
+ </layer>
+ <layer name="shadows" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBiZwJERgUcB9QEAD4wAxw==
+  </data>
+ </layer>
+ <layer name="border" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg4MJ2RgWE+CXgGI0LvPEbc5mIDC0aw3uVA9lwS8AoS7cIGAM4lFm0=
+  </data>
+ </layer>
+ <layer name="meta" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg4UMhEOkbXS4pZ1LCXHP3khgkpcoMNAAAEwRi2
+  </data>
+ </layer>
+</map>

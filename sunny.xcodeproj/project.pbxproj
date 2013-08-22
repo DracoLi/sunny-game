@@ -30,7 +30,6 @@
 		D49F928117C314EF0096A4EE /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = D49F928017C314EF0096A4EE /* iTunesArtwork */; };
 		D49F93F917C314F20096A4EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F93F817C314F20096A4EE /* main.m */; };
 		D49F93FC17C314F20096A4EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F93FB17C314F20096A4EE /* AppDelegate.m */; };
-		D49F93FF17C314F20096A4EE /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F93FE17C314F20096A4EE /* HelloWorldLayer.m */; };
 		D49F940217C314F20096A4EE /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F940117C314F20096A4EE /* IntroLayer.m */; };
 		D49F95A117C3175F0096A4EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49F926117C314EF0096A4EE /* Foundation.framework */; };
 		D49F95AC17C3179F0096A4EE /* libcocos2d-lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D49F95A017C3175F0096A4EE /* libcocos2d-lib.a */; };
@@ -142,6 +141,14 @@
 		D49F989617C317CC0096A4EE /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = D49F982717C317CC0096A4EE /* vec2.c */; };
 		D49F989717C317CC0096A4EE /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = D49F982817C317CC0096A4EE /* vec3.c */; };
 		D49F989817C317CC0096A4EE /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = D49F982917C317CC0096A4EE /* vec4.c */; };
+		D49F989B17C31F8B0096A4EE /* SceneOneLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F989A17C31F8B0096A4EE /* SceneOneLayer.m */; };
+		D49F98A017C322790096A4EE /* DSSunny.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F989F17C322790096A4EE /* DSSunny.m */; };
+		D49F98A317C322DA0096A4EE /* DSCharater.m in Sources */ = {isa = PBXBuildFile; fileRef = D49F98A217C322DA0096A4EE /* DSCharater.m */; };
+		D4A0D5FD17C5E51700F4A6D1 /* sunny-room.tmx in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D5FC17C5E51700F4A6D1 /* sunny-room.tmx */; };
+		D4A0D60117C5E54800F4A6D1 /* InnerModern-A5.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D5FE17C5E54800F4A6D1 /* InnerModern-A5.png */; };
+		D4A0D60217C5E54800F4A6D1 /* InnerModern-TileB.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D5FF17C5E54800F4A6D1 /* InnerModern-TileB.png */; };
+		D4A0D60317C5E54800F4A6D1 /* newa4.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D60017C5E54800F4A6D1 /* newa4.png */; };
+		D4A0D60517C5E7CC00F4A6D1 /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D60417C5E7CC00F4A6D1 /* meta_tiles.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -184,8 +191,6 @@
 		D49F93F817C314F20096A4EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D49F93FA17C314F20096A4EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D49F93FB17C314F20096A4EE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D49F93FD17C314F20096A4EE /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		D49F93FE17C314F20096A4EE /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		D49F940017C314F20096A4EE /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		D49F940117C314F20096A4EE /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		D49F95A017C3175F0096A4EE /* libcocos2d-lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libcocos2d-lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +444,18 @@
 		D49F982A17C317CC0096A4EE /* LICENSE_cocos2d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_cocos2d.txt; sourceTree = "<group>"; };
 		D49F982B17C317CC0096A4EE /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
 		D49F982C17C317CC0096A4EE /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE_Kazmath.txt; sourceTree = "<group>"; };
+		D49F989917C31F8A0096A4EE /* SceneOneLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneOneLayer.h; sourceTree = "<group>"; };
+		D49F989A17C31F8B0096A4EE /* SceneOneLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneOneLayer.m; sourceTree = "<group>"; };
+		D49F989E17C322790096A4EE /* DSSunny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSunny.h; sourceTree = "<group>"; };
+		D49F989F17C322790096A4EE /* DSSunny.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSSunny.m; sourceTree = "<group>"; };
+		D49F98A117C322DA0096A4EE /* DSCharater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCharater.h; sourceTree = "<group>"; };
+		D49F98A217C322DA0096A4EE /* DSCharater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCharater.m; sourceTree = "<group>"; };
+		D49F98A417C3237B0096A4EE /* DSDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDefinitions.h; sourceTree = "<group>"; };
+		D4A0D5FC17C5E51700F4A6D1 /* sunny-room.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "sunny-room.tmx"; sourceTree = "<group>"; };
+		D4A0D5FE17C5E54800F4A6D1 /* InnerModern-A5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InnerModern-A5.png"; sourceTree = "<group>"; };
+		D4A0D5FF17C5E54800F4A6D1 /* InnerModern-TileB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InnerModern-TileB.png"; sourceTree = "<group>"; };
+		D4A0D60017C5E54800F4A6D1 /* newa4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newa4.png; sourceTree = "<group>"; };
+		D4A0D60417C5E7CC00F4A6D1 /* meta_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta_tiles.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,10 +526,11 @@
 		D49F926917C314EF0096A4EE /* sunny */ = {
 			isa = PBXGroup;
 			children = (
+				D49F98A417C3237B0096A4EE /* DSDefinitions.h */,
+				D49F989D17C321E80096A4EE /* Characters */,
+				D49F989C17C31F950096A4EE /* Scenes */,
 				D49F93FA17C314F20096A4EE /* AppDelegate.h */,
 				D49F93FB17C314F20096A4EE /* AppDelegate.m */,
-				D49F93FD17C314F20096A4EE /* HelloWorldLayer.h */,
-				D49F93FE17C314F20096A4EE /* HelloWorldLayer.m */,
 				D49F940017C314F20096A4EE /* IntroLayer.h */,
 				D49F940117C314F20096A4EE /* IntroLayer.m */,
 				D49F926A17C314EF0096A4EE /* Resources */,
@@ -524,6 +542,7 @@
 		D49F926A17C314EF0096A4EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4A0D5FB17C5E4ED00F4A6D1 /* scenes */,
 				D49F972617C317CB0096A4EE /* libs */,
 				D49F926B17C314EF0096A4EE /* Default.png */,
 				D49F926D17C314EF0096A4EE /* Default@2x.png */,
@@ -903,6 +922,38 @@
 			path = GL;
 			sourceTree = "<group>";
 		};
+		D49F989C17C31F950096A4EE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D49F989917C31F8A0096A4EE /* SceneOneLayer.h */,
+				D49F989A17C31F8B0096A4EE /* SceneOneLayer.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		D49F989D17C321E80096A4EE /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				D49F989E17C322790096A4EE /* DSSunny.h */,
+				D49F989F17C322790096A4EE /* DSSunny.m */,
+				D49F98A117C322DA0096A4EE /* DSCharater.h */,
+				D49F98A217C322DA0096A4EE /* DSCharater.m */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		D4A0D5FB17C5E4ED00F4A6D1 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0D60417C5E7CC00F4A6D1 /* meta_tiles.png */,
+				D4A0D5FE17C5E54800F4A6D1 /* InnerModern-A5.png */,
+				D4A0D5FF17C5E54800F4A6D1 /* InnerModern-TileB.png */,
+				D4A0D60017C5E54800F4A6D1 /* newa4.png */,
+				D4A0D5FC17C5E51700F4A6D1 /* sunny-room.tmx */,
+			);
+			name = scenes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -983,6 +1034,11 @@
 				D49F927C17C314EF0096A4EE /* Icon.png in Resources */,
 				D49F927E17C314EF0096A4EE /* Icon@2x.png in Resources */,
 				D49F928117C314EF0096A4EE /* iTunesArtwork in Resources */,
+				D4A0D5FD17C5E51700F4A6D1 /* sunny-room.tmx in Resources */,
+				D4A0D60117C5E54800F4A6D1 /* InnerModern-A5.png in Resources */,
+				D4A0D60217C5E54800F4A6D1 /* InnerModern-TileB.png in Resources */,
+				D4A0D60317C5E54800F4A6D1 /* newa4.png in Resources */,
+				D4A0D60517C5E7CC00F4A6D1 /* meta_tiles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -995,8 +1051,10 @@
 			files = (
 				D49F93F917C314F20096A4EE /* main.m in Sources */,
 				D49F93FC17C314F20096A4EE /* AppDelegate.m in Sources */,
-				D49F93FF17C314F20096A4EE /* HelloWorldLayer.m in Sources */,
 				D49F940217C314F20096A4EE /* IntroLayer.m in Sources */,
+				D49F989B17C31F8B0096A4EE /* SceneOneLayer.m in Sources */,
+				D49F98A017C322790096A4EE /* DSSunny.m in Sources */,
+				D49F98A317C322DA0096A4EE /* DSCharater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1274,6 +1332,7 @@
 				D49F940717C314F20096A4EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D49F95A917C3175F0096A4EE /* Build configuration list for PBXNativeTarget "cocos2d-lib" */ = {
 			isa = XCConfigurationList;
@@ -1282,6 +1341,7 @@
 				D49F95AB17C3175F0096A4EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
