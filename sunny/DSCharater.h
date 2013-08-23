@@ -9,26 +9,27 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@class DSLayer;
 
-@interface DSCharater : CCNode {
+@interface DSCharater : CCNode
 
-}
-
-@property (nonatomic, weak) CCLayer *mapLayer;
+@property (nonatomic, weak) DSLayer *mapLayer;
 @property (nonatomic, strong) CCSprite *sprite;
 
 + (id)characterWithSpriteFrameName:(NSString *)frameName
                              atPos:(CGPoint)pos
-                        onMapLayer:(CCLayer *)layer;
+                        onMapLayer:(DSLayer *)layer;
 - (id)initWithSpriteFrameName:(NSString *)frameName
                         asPos:(CGPoint)pos
-                   onMapLayer:(CCLayer *)layer;
+                   onMapLayer:(DSLayer *)layer;
 
 // Makes this character to turn to face a point
 - (void)rotateToTarget:(CGPoint)target;
 
 // Makes this character to turn in that direction
 - (void)rotateToDirection:(Direction)direction;
+
+- (void)goToTarget:(CGPoint)target inSeconds:(ccTime)seconds;
 
 // Makes the character jump
 - (void)jump;

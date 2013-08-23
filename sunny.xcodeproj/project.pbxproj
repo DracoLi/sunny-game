@@ -149,6 +149,8 @@
 		D4A0D60217C5E54800F4A6D1 /* InnerModern-TileB.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D5FF17C5E54800F4A6D1 /* InnerModern-TileB.png */; };
 		D4A0D60317C5E54800F4A6D1 /* newa4.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D60017C5E54800F4A6D1 /* newa4.png */; };
 		D4A0D60517C5E7CC00F4A6D1 /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D60417C5E7CC00F4A6D1 /* meta_tiles.png */; };
+		D4A0D60817C70F9400F4A6D1 /* DSCocosHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A0D60717C70F9300F4A6D1 /* DSCocosHelpers.m */; };
+		D4A0D60B17C7168300F4A6D1 /* DSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A0D60A17C7168300F4A6D1 /* DSLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -456,6 +458,10 @@
 		D4A0D5FF17C5E54800F4A6D1 /* InnerModern-TileB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InnerModern-TileB.png"; sourceTree = "<group>"; };
 		D4A0D60017C5E54800F4A6D1 /* newa4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newa4.png; sourceTree = "<group>"; };
 		D4A0D60417C5E7CC00F4A6D1 /* meta_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meta_tiles.png; sourceTree = "<group>"; };
+		D4A0D60617C70F9300F4A6D1 /* DSCocosHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCocosHelpers.h; sourceTree = "<group>"; };
+		D4A0D60717C70F9300F4A6D1 /* DSCocosHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCocosHelpers.m; sourceTree = "<group>"; };
+		D4A0D60917C7168300F4A6D1 /* DSLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayer.h; sourceTree = "<group>"; };
+		D4A0D60A17C7168300F4A6D1 /* DSLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,6 +541,8 @@
 				D49F940117C314F20096A4EE /* IntroLayer.m */,
 				D49F926A17C314EF0096A4EE /* Resources */,
 				D49F93F617C314F20096A4EE /* Supporting Files */,
+				D4A0D60617C70F9300F4A6D1 /* DSCocosHelpers.h */,
+				D4A0D60717C70F9300F4A6D1 /* DSCocosHelpers.m */,
 			);
 			path = sunny;
 			sourceTree = "<group>";
@@ -927,6 +935,8 @@
 			children = (
 				D49F989917C31F8A0096A4EE /* SceneOneLayer.h */,
 				D49F989A17C31F8B0096A4EE /* SceneOneLayer.m */,
+				D4A0D60917C7168300F4A6D1 /* DSLayer.h */,
+				D4A0D60A17C7168300F4A6D1 /* DSLayer.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1055,6 +1065,8 @@
 				D49F989B17C31F8B0096A4EE /* SceneOneLayer.m in Sources */,
 				D49F98A017C322790096A4EE /* DSSunny.m in Sources */,
 				D49F98A317C322DA0096A4EE /* DSCharater.m in Sources */,
+				D4A0D60817C70F9400F4A6D1 /* DSCocosHelpers.m in Sources */,
+				D4A0D60B17C7168300F4A6D1 /* DSLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

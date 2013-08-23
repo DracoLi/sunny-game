@@ -9,8 +9,6 @@
 #import "SceneOneLayer.h"
 
 @interface SceneOneLayer ()
-@property (nonatomic, strong) CCTMXTiledMap *tileMap;
-@property (nonatomic, strong) CCTMXLayer *metaLayer;
 @property (nonatomic) CGSize tileSize;
 @end
 

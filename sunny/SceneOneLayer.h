@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "DSLayer.h"
 
-@interface SceneOneLayer : CCLayer {
-    
-}
+@interface SceneOneLayer : DSLayer
 
 +(CCScene *) scene;
 

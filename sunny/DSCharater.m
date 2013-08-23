@@ -7,13 +7,21 @@
 //
 
 #import "DSCharater.h"
+#import "DSLayer.h"
+#import "DSCocosHelpers.h"
 
+@interface DSCharater ()
+@property (nonatomic) ccTime moveTimer;
+@property (nonatomic) CGPoint moveTarget;
+
+- (void)setCharacterPosition:(CGPoint)position;
+@end
 
 @implementation DSCharater
 
 + (id)characterWithSpriteFrameName:(NSString *)frameName
                              atPos:(CGPoint)pos
-                        onMapLayer:(CCLayer *)layer
+                        onMapLayer:(DSLayer *)layer
 {
   return [[self alloc] initWithSpriteFrameName:frameName
                                          asPos:pos
@@ -22,7 +30,7 @@
 
 - (id)initWithSpriteFrameName:(NSString *)frameName
                         asPos:(CGPoint)pos
-                   onMapLayer:(CCLayer *)layer
+                   onMapLayer:(DSLayer *)layer
 {
   self = [super init];
   if (self) {
@@ -37,13 +45,28 @@
   return self;
 }
 
-- (void)setPosition:(CGPoint)position
+- (void)goToTarget:(CGPoint)target inSeconds:(ccTime)seconds
 {
-  // Determine if this character is allowed to walk
+  // Rotate the person before moving
+  [self rotateToTarget:target];
   
-  // Collision detection
+  // Check if there are any obsticals to the target
+  // In the current case, we should no move the character through an invalid path
+  // If that is the case then we don't handle it right now except raising an error
+  if (![self.mapLayer canCharacter:self walkToPosition:target]) {
+    [NSException raise:@"Invalid move destination"
+                format:@"We should not move a character through blocked content!"];
+  }
   
-  [super setPosition:position];
+  // Animate character walking
+  
+  // Animate character moving
+}
+
+- (void)playWalkAnimationToTarget:(CGPoint)target
+{
+  Direction direction = [DSCocosHelpers directionFromPosition:self.sprite.position
+                                                   toPosition:target];
 }
 
 - (void)rotateToTarget:(CGPoint)target

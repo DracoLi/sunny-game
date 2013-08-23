@@ -9,6 +9,7 @@
 
 #define kDefaultCharacterIndex 2
 #define kGameScale 1
+#define kCharacterStepDistance 10
 
 
 typedef enum {
