@@ -12,6 +12,10 @@
 
 @interface DSSunny : DSCharater
 
+// Can sunny be controlled right now?
+@property (nonatomic) BOOL controllable;
+
+
 + (id)characterAtPos:(CGPoint)pos
           onMapLayer:(DSLayer *)layer;
 - (id)initAtPos:(CGPoint)pos

@@ -28,26 +28,17 @@
   return ccp(x, y);
 }
 
-+ (Direction)directionFromPosition:(CGPoint)fromPos toPosition:(CGPoint)toPos
+
+#pragma mark - Direction Helpers
+
++ (Direction)directionToPosition:(CGPoint)toPos fromPosition:(CGPoint)fromPos
 {
-  if (fromPos.x == toPos.x) {
-    if (toPos.x > fromPos.x) {
-      return kDirectionEast;
-    }else {
-      return kDirectionWest;
-    }
-  }else if (fromPos.y == toPos.y) {
-    if (toPos.y > fromPos.y) {
-      return kDirectionNorth;
-    }else {
-      return kDirectionSouth;
-    }
+  CGPoint diff = ccpSub(toPos, fromPos);
+  if (abs(diff.x) > abs(diff.y)) {
+    return diff.x > 0 ? kDirectionEast : kDirectionWest;
   }else {
-    [NSException raise:@"Invalid Input"
-                format:@"Must provide a toPosition that is in a single direction"];
+    return diff.y > 0 ? kDirectionNorth : kDirectionSouth;
   }
-  
-  return kDirectionNorth;
 }
 
 + (NSString *)stringFromDirection:(Direction)direction
@@ -70,6 +61,22 @@
       [NSException raise:@"Invalid Argument" format:@"Bad direction provided"];
   }
   return dirString;
+}
+
++ (CGPoint)pointFromDirection:(Direction)direction
+{
+  switch (direction) {
+    case kDirectionNorth:
+      return CGPointMake(0, 1);
+    case kDirectionEast:
+      return CGPointMake(1, 0);
+    case kDirectionSouth:
+      return CGPointMake(0, -1);
+    case kDirectionWest:
+      return CGPointMake(-1, 0);
+    default:
+      [NSException raise:@"Invalid Argument" format:@"Bad direction provided"];
+  }
 }
 
 @end

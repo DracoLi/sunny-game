@@ -33,6 +33,7 @@
 // Walk this character to the specified target
 - (void)goToTarget:(CGPoint)target;
 - (void)goToTarget:(CGPoint)target speedMultiplier:(CGFloat)multiplier;
+- (void)takeSteps:(NSInteger)steps towardsDirection:(Direction)direction;
 
 // Makes the character jump
 - (void)jump;

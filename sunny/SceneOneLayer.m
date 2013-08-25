@@ -45,34 +45,31 @@
     
     // Load in sunny and sunny mom
     self.sunny = [DSSunny characterAtPos:CGPointMake(340, 80) onMapLayer:self];
-    
-    self.touchEnabled = YES;
-    [self scheduleUpdate];
   }
   return self;
 }
 
-- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-  NSLog(@"touch began");
-}
+
+#pragma mark - Touch Delegate
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  NSLog(@"touch ended");
+  [super ccTouchesEnded:touches withEvent:event];
   
   // Testing stuff
   
   // Test direction change
-//  self.sunny.direction = (self.sunny.direction + 1) % 4;
+  //  self.sunny.direction = (self.sunny.direction + 1) % 4;
   
   // Test walking
-  [self.sunny animateWalkInSamePosition];
+//  [self.sunny animateWalkInSamePosition];
 }
 
-- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)update:(ccTime)delta
 {
-  NSLog(@"touch moved");
+  [super update:delta];
+  
+  [self.sunny update:delta];
 }
 
 @end

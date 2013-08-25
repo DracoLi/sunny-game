@@ -14,10 +14,10 @@
 ////// Character Contants //////
 
 // A character's default travel distance per step
-#define kCharacterDistancePerStep 10
+#define kCharacterDistancePerStep 15
 
 // A character's default speed per step in seconds
-#define kCharacterSpeedPerStep  0.65
+#define kCharacterSpeedPerStep  0.2
 
 // A character's default frames for walk animations
 #define kCharacterWalkAnimationFrames  3

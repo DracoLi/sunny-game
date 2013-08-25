@@ -7,7 +7,12 @@
 //
 
 #import "DSSunny.h"
+#import "DSLayer.h"
+#import "DSCocosHelpers.h"
 
+@interface DSSunny ()
+@property (nonatomic) ccTime currentStepTimer;
+@end
 
 @implementation DSSunny
 
@@ -27,6 +32,31 @@
     // Other sunny initializations
   }
   return self;
+}
+
+- (void)update:(ccTime)dt
+{
+  [super update:dt];
+  
+  if (self.mapLayer.isTouching) {
+    CGPoint touchLocation = self.mapLayer.currentTouchLocation;
+    
+    // Determine the touch direction
+    Direction direction = [DSCocosHelpers directionToPosition:touchLocation
+                                                 fromPosition:self.sprite.position];
+    // Take one step to that direction whenever
+    if (self.currentStepTimer < 0) {
+      // Take one step to that direciton
+      [self takeSteps:1 towardsDirection:direction];
+      self.currentStepTimer = kCharacterSpeedPerStep;
+      NSLog(@"moveing player one step to direction");
+    }else {
+      // Add timer towards our first step
+      self.currentStepTimer -= dt;
+    }
+  }else {
+    self.currentStepTimer = 0;
+  }
 }
 
 @end

@@ -15,6 +15,9 @@
 @property (nonatomic, strong) CCTMXLayer *metaLayer;
 @property (nonatomic, strong) CCSpriteBatchNode *characterLayer;
 
+@property (nonatomic) BOOL isTouching;
+@property (nonatomic) CGPoint currentTouchLocation;
+
 - (BOOL)isPositionBlocked:(CGPoint)position;
 - (BOOL)isTileCoordBlocked:(CGPoint)tileCoord;
 - (BOOL)canCharacter:(DSCharater *)character walkToPosition:(CGPoint)position;

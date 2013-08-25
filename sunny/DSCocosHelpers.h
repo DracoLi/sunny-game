@@ -17,7 +17,8 @@
 
 
 // Direction related
-+ (Direction)directionFromPosition:(CGPoint)fromPos toPosition:(CGPoint)toPos;
++ (Direction)directionToPosition:(CGPoint)fromPos fromPosition:(CGPoint)toPos;
 + (NSString *)stringFromDirection:(Direction)direction;
++ (CGPoint)pointFromDirection:(Direction)direction;
 
 @end
