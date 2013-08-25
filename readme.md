@@ -16,7 +16,7 @@ Special Thanks To:
 
 Draco Li
 
-- http;//github.com/dracoli
+- http://github.com/dracoli
 - <draco@dracoli.com>
 
 ## License
