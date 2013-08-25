@@ -10,6 +10,8 @@
 #define kDefaultCharacterIndex 2
 #define kGameScale 1
 
+#define tilesetWidth 32
+
 
 ////// Character Contants //////
 

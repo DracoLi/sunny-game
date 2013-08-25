@@ -35,6 +35,16 @@
 - (void)goToTarget:(CGPoint)target speedMultiplier:(CGFloat)multiplier;
 - (void)takeSteps:(NSInteger)steps towardsDirection:(Direction)direction;
 
+/**
+ * Our base walk method. All character moving methods call this to walk.
+ * Our current walk implementation only support walking in one direction.
+ * This method also handles collision checking.
+ *
+ * By default multiplier is 1, but this can be changes to walk faster or slower
+ */
+- (void)walk:(CGFloat)distance inDirection:(Direction)direction;
+- (void)walk:(CGFloat)distance inDirection:(Direction)direction speedMultiplier:(CGFloat)multiplier;
+
 // Makes the character jump
 - (void)jump;
 

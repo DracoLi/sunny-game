@@ -10,6 +10,8 @@
 
 @implementation DSCocosHelpers
 
+#pragma mark - Tile Coordinate helpers
+
 + (CGPoint)tileCoordForPosition:(CGPoint)position
                         tileMap:(CCTMXTiledMap *)tileMap
 {
@@ -19,15 +21,23 @@
   return ccp(x, y);
 }
 
-+ (CGPoint)positionForTileCoord:(CGPoint)tileCoord
-                        tileMap:(CCTMXTiledMap *)tileMap
++ (CGRect)rectForTileCoord:(CGPoint)tileCoord onTileMap:(CCTMXTiledMap *)tileMap
 {
   CGSize tileSize = tileMap.tileSize;
-  int x = (tileCoord.x * tileSize.width) + tileSize.width;
+  int x = tileCoord.x * tileSize.width;
   int y = (tileMap.mapSize.height * tileSize.height) - (tileCoord.y * tileSize.height) - tileSize.height;
-  return ccp(x, y);
+  return CGRectMake(x, y, tilesetWidth, tilesetWidth);
 }
 
+// Helper method to check if a rect intersets with a certain tile coordinate
++ (BOOL)rectIntersectsWithTileCoord:(CGPoint)tileCoord
+                               rect:(CGRect)rect
+                          onTileMap:(CCTMXTiledMap *)tileMap
+{
+  // Get the CGRect for the tileCoord
+  CGRect tileCoordRect = [self rectForTileCoord:tileCoord onTileMap:tileMap];
+  return CGRectIntersectsRect(rect, tileCoordRect);
+}
 
 #pragma mark - Direction Helpers
 
@@ -77,6 +87,30 @@
     default:
       [NSException raise:@"Invalid Argument" format:@"Bad direction provided"];
   }
+}
+
++ (void)validateTargetIsInDirectDirection:(CGPoint)target
+                               fromSource:(CGPoint)source
+{
+  BOOL isDirect = [self isTargetInDirectDirection:target fromSource:source];
+  if (!isDirect) {
+    [NSException raise:@"Invalid Argument"
+                format:@"Targer is not in the same position as the source position!"];
+  }
+}
+
++ (BOOL)isTargetInDirectDirection:(CGPoint)target
+                       fromSource:(CGPoint)source
+{
+  if (CGPointEqualToPoint(target, source)) {
+    return NO;
+  }
+  
+  if (target.x != source.x && target.y != source.y) {
+    return NO;
+  }
+  
+  return YES;
 }
 
 @end

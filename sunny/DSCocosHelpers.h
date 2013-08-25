@@ -12,13 +12,25 @@
 
 + (CGPoint)tileCoordForPosition:(CGPoint)position
                         tileMap:(CCTMXTiledMap *)tileMap;
-+ (CGPoint)positionForTileCoord:(CGPoint)tileCoord
-                        tileMap:(CCTMXTiledMap *)tileMap;
+
++ (CGRect)rectForTileCoord:(CGPoint)tileCoord onTileMap:(CCTMXTiledMap *)tileMap;
+
++ (BOOL)rectIntersectsWithTileCoord:(CGPoint)tileCoord
+                               rect:(CGRect)rect
+                          onTileMap:(CCTMXTiledMap *)tileMap;
 
 
 // Direction related
 + (Direction)directionToPosition:(CGPoint)fromPos fromPosition:(CGPoint)toPos;
 + (NSString *)stringFromDirection:(Direction)direction;
 + (CGPoint)pointFromDirection:(Direction)direction;
+
+/**
+ * Check if target potion is in a direct direction from the source position
+ */
++ (void)validateTargetIsInDirectDirection:(CGPoint)target
+                               fromSource:(CGPoint)source;
++ (BOOL)isTargetInDirectDirection:(CGPoint)target
+                       fromSource:(CGPoint)source;
 
 @end
