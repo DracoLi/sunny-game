@@ -12,4 +12,9 @@
 
 @interface DSSunny : DSCharater
 
++ (id)characterAtPos:(CGPoint)pos
+          onMapLayer:(DSLayer *)layer;
+- (id)initAtPos:(CGPoint)pos
+     onMapLayer:(DSLayer *)layer;
+
 @end

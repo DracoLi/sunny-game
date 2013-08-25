@@ -151,6 +151,10 @@
 		D4A0D60517C5E7CC00F4A6D1 /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D60417C5E7CC00F4A6D1 /* meta_tiles.png */; };
 		D4A0D60817C70F9400F4A6D1 /* DSCocosHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A0D60717C70F9300F4A6D1 /* DSCocosHelpers.m */; };
 		D4A0D60B17C7168300F4A6D1 /* DSLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A0D60A17C7168300F4A6D1 /* DSLayer.m */; };
+		D4A0D61117C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A0D60E17C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m */; };
+		D4A0D61217C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A0D61017C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m */; };
+		D4A0D61617C9BBCF00F4A6D1 /* main-chars.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D61417C9BBCF00F4A6D1 /* main-chars.plist */; };
+		D4A0D61717C9BBCF00F4A6D1 /* main-chars.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D61517C9BBCF00F4A6D1 /* main-chars.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -462,6 +466,12 @@
 		D4A0D60717C70F9300F4A6D1 /* DSCocosHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCocosHelpers.m; sourceTree = "<group>"; };
 		D4A0D60917C7168300F4A6D1 /* DSLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLayer.h; sourceTree = "<group>"; };
 		D4A0D60A17C7168300F4A6D1 /* DSLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLayer.m; sourceTree = "<group>"; };
+		D4A0D60D17C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCAnimate+SequenceLoader.h"; sourceTree = "<group>"; };
+		D4A0D60E17C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCAnimate+SequenceLoader.m"; sourceTree = "<group>"; };
+		D4A0D60F17C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCAnimation+SequenceLoader.h"; sourceTree = "<group>"; };
+		D4A0D61017C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCAnimation+SequenceLoader.m"; sourceTree = "<group>"; };
+		D4A0D61417C9BBCF00F4A6D1 /* main-chars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "main-chars.plist"; sourceTree = "<group>"; };
+		D4A0D61517C9BBCF00F4A6D1 /* main-chars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-chars.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -533,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				D49F98A417C3237B0096A4EE /* DSDefinitions.h */,
+				D4A0D60C17C9AED300F4A6D1 /* Categories */,
 				D49F989D17C321E80096A4EE /* Characters */,
 				D49F989C17C31F950096A4EE /* Scenes */,
 				D49F93FA17C314F20096A4EE /* AppDelegate.h */,
@@ -550,6 +561,7 @@
 		D49F926A17C314EF0096A4EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4A0D61317C9BBCF00F4A6D1 /* Characters */,
 				D4A0D5FB17C5E4ED00F4A6D1 /* scenes */,
 				D49F972617C317CB0096A4EE /* libs */,
 				D49F926B17C314EF0096A4EE /* Default.png */,
@@ -964,6 +976,27 @@
 			name = scenes;
 			sourceTree = "<group>";
 		};
+		D4A0D60C17C9AED300F4A6D1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0D60D17C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.h */,
+				D4A0D60E17C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m */,
+				D4A0D60F17C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.h */,
+				D4A0D61017C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		D4A0D61317C9BBCF00F4A6D1 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				D4A0D61417C9BBCF00F4A6D1 /* main-chars.plist */,
+				D4A0D61517C9BBCF00F4A6D1 /* main-chars.png */,
+			);
+			name = Characters;
+			path = Resources/Characters;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1049,6 +1082,8 @@
 				D4A0D60217C5E54800F4A6D1 /* InnerModern-TileB.png in Resources */,
 				D4A0D60317C5E54800F4A6D1 /* newa4.png in Resources */,
 				D4A0D60517C5E7CC00F4A6D1 /* meta_tiles.png in Resources */,
+				D4A0D61617C9BBCF00F4A6D1 /* main-chars.plist in Resources */,
+				D4A0D61717C9BBCF00F4A6D1 /* main-chars.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,6 +1102,8 @@
 				D49F98A317C322DA0096A4EE /* DSCharater.m in Sources */,
 				D4A0D60817C70F9400F4A6D1 /* DSCocosHelpers.m in Sources */,
 				D4A0D60B17C7168300F4A6D1 /* DSLayer.m in Sources */,
+				D4A0D61117C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m in Sources */,
+				D4A0D61217C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

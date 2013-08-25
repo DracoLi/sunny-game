@@ -9,8 +9,18 @@
 
 #define kDefaultCharacterIndex 2
 #define kGameScale 1
-#define kCharacterStepDistance 10
 
+
+////// Character Contants //////
+
+// A character's default travel distance per step
+#define kCharacterDistancePerStep 10
+
+// A character's default speed per step in seconds
+#define kCharacterSpeedPerStep  0.65
+
+// A character's default frames for walk animations
+#define kCharacterWalkAnimationFrames  3
 
 typedef enum {
   kBallonTypeExclaimation,
@@ -26,7 +36,7 @@ typedef enum {
 } BallonType;
 
 typedef enum {
-  kDirectionNorth,
+  kDirectionNorth = 0,
   kDirectionEast,
   kDirectionSouth,
   kDirectionWest

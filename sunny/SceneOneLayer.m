@@ -7,9 +7,11 @@
 //
 
 #import "SceneOneLayer.h"
+#import "DSSunny.h"
 
 @interface SceneOneLayer ()
 @property (nonatomic) CGSize tileSize;
+@property (nonatomic, strong) DSSunny *sunny;
 @end
 
 @implementation SceneOneLayer
@@ -35,10 +37,16 @@
     self.metaLayer.visible = NO;
     self.tileSize = self.tileMap.tileSize;
     
+    // Load in batch node
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"main-chars.plist"];
+    self.characterLayer = [CCSpriteBatchNode batchNodeWithFile:@"main-chars.png"
+                                                  capacity:50];
+    [self addChild:self.characterLayer z:kDefaultCharacterIndex];
+    
     // Load in sunny and sunny mom
+    self.sunny = [DSSunny characterAtPos:CGPointMake(340, 80) onMapLayer:self];
     
     self.touchEnabled = YES;
-    
     [self scheduleUpdate];
   }
   return self;
@@ -52,6 +60,14 @@
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
   NSLog(@"touch ended");
+  
+  // Testing stuff
+  
+  // Test direction change
+//  self.sunny.direction = (self.sunny.direction + 1) % 4;
+  
+  // Test walking
+  [self.sunny animateWalkInSamePosition];
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event

@@ -13,6 +13,7 @@
 @interface DSLayer : CCLayer
 @property (nonatomic, strong) CCTMXTiledMap *tileMap;
 @property (nonatomic, strong) CCTMXLayer *metaLayer;
+@property (nonatomic, strong) CCSpriteBatchNode *characterLayer;
 
 - (BOOL)isPositionBlocked:(CGPoint)position;
 - (BOOL)isTileCoordBlocked:(CGPoint)tileCoord;

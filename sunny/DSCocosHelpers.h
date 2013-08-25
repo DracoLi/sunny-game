@@ -16,6 +16,8 @@
                         tileMap:(CCTMXTiledMap *)tileMap;
 
 
+// Direction related
 + (Direction)directionFromPosition:(CGPoint)fromPos toPosition:(CGPoint)toPos;
++ (NSString *)stringFromDirection:(Direction)direction;
 
 @end

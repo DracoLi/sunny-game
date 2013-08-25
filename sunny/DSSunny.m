@@ -11,4 +11,22 @@
 
 @implementation DSSunny
 
++ (id)characterAtPos:(CGPoint)pos
+          onMapLayer:(DSLayer *)layer
+{
+  return [[self alloc] initAtPos:pos onMapLayer:layer];
+}
+
+- (id)initAtPos:(CGPoint)pos
+     onMapLayer:(DSLayer *)layer
+{
+  self = [super initWithSpriteFrameName:@"sunny_s_00.png"
+                                  atPos:pos
+                             onMapLayer:layer];
+  if (self) {
+    // Other sunny initializations
+  }
+  return self;
+}
+
 @end

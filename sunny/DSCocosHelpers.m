@@ -50,4 +50,26 @@
   return kDirectionNorth;
 }
 
++ (NSString *)stringFromDirection:(Direction)direction
+{
+  NSString *dirString = @"n";
+  switch (direction) {
+    case kDirectionNorth:
+      dirString = @"n";
+      break;
+    case kDirectionEast:
+      dirString = @"e";
+      break;
+    case kDirectionSouth:
+      dirString = @"s";
+      break;
+    case kDirectionWest:
+      dirString = @"w";
+      break;
+    default:
+      [NSException raise:@"Invalid Argument" format:@"Bad direction provided"];
+  }
+  return dirString;
+}
+
 @end
