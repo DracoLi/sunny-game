@@ -7,16 +7,21 @@
 //
 
 
+// Configurations
+#define kShouldPlayWalkAnimationWhenBlocked YES
+
+
 #define kDefaultCharacterIndex 2
 #define kGameScale 1
+
 
 ////// Character Contants //////
 
 // A character's default travel distance per step
-#define kCharacterDistancePerStep 15
+#define kCharacterDistancePerStep 18
 
 // A character's default speed per step in seconds
-#define kCharacterSpeedPerStep  0.2
+#define kCharacterSpeedPerStep  0.25
 
 // A character's default frames for walk animations
 #define kCharacterWalkAnimationFrames  3

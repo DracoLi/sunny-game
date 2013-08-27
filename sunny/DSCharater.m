@@ -146,7 +146,9 @@
     // This character cannot move anymore
     // TODO: optionally play walk animation as long as we are trying to walk.
     //       of course the implementaion of this wont be specially in here.
-    [self playWalkAnimationToDirection:direction inSteps:1];
+    if (kShouldPlayWalkAnimationWhenBlocked) {
+      [self playWalkAnimationToDirection:direction inSteps:1];
+    }
     return;
   }
   
