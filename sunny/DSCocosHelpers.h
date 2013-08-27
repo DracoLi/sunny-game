@@ -23,7 +23,8 @@
 // Direction related
 + (Direction)directionToPosition:(CGPoint)fromPos fromPosition:(CGPoint)toPos;
 + (NSString *)stringFromDirection:(Direction)direction;
-+ (CGPoint)pointFromDirection:(Direction)direction;
++ (CGPoint)tileCoordDiffForDirection:(Direction)direction;
++ (CGPoint)positionDiffForDirection:(Direction)direction;
 
 /**
  * Check if target potion is in a direct direction from the source position

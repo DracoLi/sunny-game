@@ -93,8 +93,6 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  NSLog(@"touch began");
-  
   // Update current touch location
   UITouch *touch = [touches anyObject];
   CGPoint touchLocation = [[CCDirector sharedDirector] convertTouchToGL:touch];
@@ -105,16 +103,12 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  NSLog(@"touch ended");
   self.currentTouchLocation = CGPointZero;
   self.isTouching = NO;
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  NSLog(@"touch moved");
-  
-  // We do not update touch location on touch move
 }
 
 @end

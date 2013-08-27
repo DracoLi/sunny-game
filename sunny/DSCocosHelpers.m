@@ -16,7 +16,7 @@
                         tileMap:(CCTMXTiledMap *)tileMap
 {
   CGSize tileSize = tileMap.tileSize;
-  int x = position.x / (tileSize.width);
+  int x = position.x / tileSize.width;
   int y = ((tileMap.mapSize.height * tileSize.height) - position.y) / (tileSize.height);
   return ccp(x, y);
 }
@@ -26,7 +26,7 @@
   CGSize tileSize = tileMap.tileSize;
   int x = tileCoord.x * tileSize.width;
   int y = (tileMap.mapSize.height * tileSize.height) - (tileCoord.y * tileSize.height) - tileSize.height;
-  return CGRectMake(x, y, tilesetWidth, tilesetWidth);
+  return CGRectMake(x, y, tileSize.width, tileSize.height);
 }
 
 // Helper method to check if a rect intersets with a certain tile coordinate
@@ -73,7 +73,23 @@
   return dirString;
 }
 
-+ (CGPoint)pointFromDirection:(Direction)direction
++ (CGPoint)tileCoordDiffForDirection:(Direction)direction
+{
+  switch (direction) {
+    case kDirectionNorth:
+      return CGPointMake(0, -1);
+    case kDirectionEast:
+      return CGPointMake(1, 0);
+    case kDirectionSouth:
+      return CGPointMake(0, 1);
+    case kDirectionWest:
+      return CGPointMake(-1, 0);
+    default:
+      [NSException raise:@"Invalid Argument" format:@"Bad direction provided"];
+  }
+}
+
++ (CGPoint)positionDiffForDirection:(Direction)direction
 {
   switch (direction) {
     case kDirectionNorth:

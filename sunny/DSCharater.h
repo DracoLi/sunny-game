@@ -32,7 +32,7 @@
 
 // Walk this character to the specified target
 - (void)goToTarget:(CGPoint)target;
-- (void)goToTarget:(CGPoint)target speedMultiplier:(CGFloat)multiplier;
+- (void)goToTarget:(CGPoint)target withSpeedMultiplier:(CGFloat)multiplier;
 - (void)takeSteps:(NSInteger)steps towardsDirection:(Direction)direction;
 
 /**
@@ -43,7 +43,8 @@
  * By default multiplier is 1, but this can be changes to walk faster or slower
  */
 - (void)walk:(CGFloat)distance inDirection:(Direction)direction;
-- (void)walk:(CGFloat)distance inDirection:(Direction)direction speedMultiplier:(CGFloat)multiplier;
+- (void)walk:(CGFloat)distance inDirection:(Direction)direction
+                       withSpeedMultiplier:(CGFloat)multiplier;
 
 // Makes the character jump
 - (void)jump;

@@ -79,14 +79,14 @@
     _direction = kDirectionSouth;
     
     /**
-     * The character position is determined by where its feed is at,
+     * The character position is determined by where its feet is at,
      * Thus when setting the anchor point we set it at the top of the
      * character's feet section. This way the character's feet can be at
-     * a valid tile white its body is in over an collidable object
+     * a valid tile while its body is in over a collidable object
      */
     _sprite.anchorPoint = ccp(0.5, 0.2);
     
-    // Add character sprite to map
+    // Add character sprite to this character's tile map
     _mapLayer = layer;
     [_mapLayer.characterLayer addChild:_sprite z:kDefaultCharacterIndex];
   }
@@ -97,16 +97,16 @@
 #pragma mark - Character travelling related
 
 - (void)goToTarget:(CGPoint)target {
-  [self goToTarget:target speedMultiplier:1];
+  [self goToTarget:target withSpeedMultiplier:1];
 }
 
 // Currently goToTarget does not handle going to a target that is not
 // in direct direction with the target and when there's something blocking the way
-- (void)goToTarget:(CGPoint)target speedMultiplier:(CGFloat)multiplier
+- (void)goToTarget:(CGPoint)target withSpeedMultiplier:(CGFloat)multiplier
 {
   CGPoint source = self.sprite.position;
   
-  // Make sure target is in direct direction from current position
+  // Make sure target is in a direct direction from current position
   [DSCocosHelpers validateTargetIsInDirectDirection:target fromSource:source];
   
   // Get target direction
@@ -115,7 +115,7 @@
   
   // Perform walk
   CGFloat distance = ccpDistance(self.sprite.position, target);
-  [self walk:distance inDirection:direction speedMultiplier:multiplier];
+  [self walk:distance inDirection:direction withSpeedMultiplier:multiplier];
 }
 
 - (void)takeSteps:(NSInteger)steps towardsDirection:(Direction)direction
@@ -125,16 +125,19 @@
 }
 
 - (void)walk:(CGFloat)distance inDirection:(Direction)direction {
-  [self walk:distance inDirection:direction speedMultiplier:1];
+  [self walk:distance inDirection:direction withSpeedMultiplier:1];
 }
 
-- (void)walk:(CGFloat)distance inDirection:(Direction)direction speedMultiplier:(CGFloat)multiplier
+- (void)walk:(CGFloat)distance inDirection:(Direction)direction
+                       withSpeedMultiplier:(CGFloat)multiplier
 {
+  NSLog(@"character is now gonna walk %.1fpx towards direction %i", distance, direction);
+  
   // Whether or not we can walk, we turn first
   self.direction = direction;
   
   // Figure out final direction
-  CGPoint diffPos = ccpMult([DSCocosHelpers pointFromDirection:direction], distance);
+  CGPoint diffPos = ccpMult([DSCocosHelpers positionDiffForDirection:direction], distance);
   CGPoint finalPos = ccpAdd(self.sprite.position, diffPos);
   
   // Collision detection
@@ -146,6 +149,8 @@
     return;
   }
   
+  [self stopAllAnimations];
+  
   // Start character walk animation
   // This method will determine how many steps to take to animate walk to that pos
   [self playWalkAnimationToTarget:adjustedPos];
@@ -155,7 +160,6 @@
   ccTime duration = (distance / adjustedDistancePerStep) * kCharacterSpeedPerStep;
   id moveAction = [CCMoveTo actionWithDuration:duration position:adjustedPos];
   [self.sprite runAction:[CCSequence actions:moveAction, nil]];
-  //  self.sprite.position = target;
 }
 
 # pragma mark - Chracter animation related
@@ -220,9 +224,8 @@
   
   // Figure out how many steps we need to take
   CGFloat distance = ccpDistance(self.sprite.position, target);
-  NSLog(@"character distance to walk: %f", distance);
   NSUInteger steps = ceilf(distance / kCharacterDistancePerStep);
-  NSLog(@"character is now gonna take %i steps", steps);
+  NSLog(@"character is now gonna animate %i steps", steps);
   
   [self playWalkAnimationToDirection:direction inSteps:steps];
 }
@@ -236,7 +239,7 @@
                          self.baseFrameName, dirString];
   CCActionInterval *action = [CCAnimate
                               actionWithSpriteSequence:walkCycle
-                              numFrames:3
+                              numFrames:kCharacterWalkAnimationFrames
                               delay:kCharacterSpeedPerStep/kCharacterWalkAnimationFrames
                               restoreOriginalFrame:YES];
   
@@ -254,8 +257,8 @@
 
 - (NSString *)baseFrameName
 {
-  NSRange rng = [self.initialFrameName rangeOfString:@"_"];
-  return [self.initialFrameName substringToIndex:rng.location];
+  NSRange rangeOfName = [self.initialFrameName rangeOfString:@"_"];
+  return [self.initialFrameName substringToIndex:rangeOfName.location];
 }
 
 - (CGRect)feetRect
@@ -289,66 +292,70 @@
   Direction direction = [DSCocosHelpers directionToPosition:target
                                                fromPosition:self.sprite.position];
   
-  // Check if our character's feet's bounding box is also intersecting another
-  // adjacent tile. If thats the case, then we need to consider an adjacent
-  // tile when we are walking.
+  // Check if our character's feet's bounding box is also intersecting with
+  // another adjacent tile. If thats the case, then we need to always consider
+  // an adjacent tile when we are walking.
   BOOL intersetsAdjacentTile = NO;
   CGPoint adjacentTileAdjustment = CGPointZero;
   CGRect initialBoundingBox = self.feetRectInParent;
   if (direction == kDirectionNorth || direction == kDirectionSouth)
   {
+    // Get adjustment points for left and right
+    CGPoint leftPoint = [DSCocosHelpers tileCoordDiffForDirection:kDirectionWest];
+    CGPoint rightPoint = [DSCocosHelpers tileCoordDiffForDirection:kDirectionEast];
+    
     // Consider the left and right adjacent tiles
-    CGPoint left = ccpAdd(startCoord, CGPointMake(-1, 0));
-    CGPoint right = ccpAdd(startCoord, CGPointMake(1, 0));
-    if ([DSCocosHelpers rectIntersectsWithTileCoord:left
+    CGPoint leftTile = ccpAdd(startCoord, leftPoint);
+    CGPoint rightTile = ccpAdd(startCoord, rightPoint);
+    if ([DSCocosHelpers rectIntersectsWithTileCoord:leftTile
                                                rect:initialBoundingBox
                                           onTileMap:tileMap])
     {
       intersetsAdjacentTile = YES;
-      adjacentTileAdjustment = CGPointMake(-1, 0);
+      adjacentTileAdjustment = leftPoint;
     }
-    else if ([DSCocosHelpers rectIntersectsWithTileCoord:right
+    else if ([DSCocosHelpers rectIntersectsWithTileCoord:rightTile
                                                     rect:initialBoundingBox
                                                onTileMap:tileMap])
     {
       intersetsAdjacentTile = YES;
-      adjacentTileAdjustment = CGPointMake(1, 0);
+      adjacentTileAdjustment = rightPoint;
     }
   }
   else
   {
+    // Get adjustment points for top and bot
+    CGPoint topPoint = [DSCocosHelpers tileCoordDiffForDirection:kDirectionNorth];
+    CGPoint botPoint = [DSCocosHelpers tileCoordDiffForDirection:kDirectionSouth];
+    
     // Consider the top and bototm adjacent tiles
-    CGPoint top = ccpAdd(startCoord, CGPointMake(0, 1));
-    CGPoint bot = ccpAdd(startCoord, CGPointMake(0, -1));
-    if ([DSCocosHelpers rectIntersectsWithTileCoord:top
+    CGPoint topTile = ccpAdd(startCoord, topPoint);
+    CGPoint botTile = ccpAdd(startCoord, botPoint);
+    if ([DSCocosHelpers rectIntersectsWithTileCoord:topTile
                                                rect:initialBoundingBox
                                           onTileMap:tileMap])
     {
       intersetsAdjacentTile = YES;
-      adjacentTileAdjustment = CGPointMake(0, 1);
+      adjacentTileAdjustment = topPoint;
     }
-    else if ([DSCocosHelpers rectIntersectsWithTileCoord:bot
+    else if ([DSCocosHelpers rectIntersectsWithTileCoord:botTile
                                                     rect:initialBoundingBox
                                                onTileMap:tileMap])
     {
       intersetsAdjacentTile = YES;
-      adjacentTileAdjustment = CGPointMake(0, -0);
+      adjacentTileAdjustment = botPoint;
     }
   }
   
   // Loop through all tiles from current pos to target pos
-  // If startCoord is same at destinationCoord then we do nothing here.
+  // If startCoord is same at destinationCoord then we are doing nothing here.
+  // Note that we here assume that the destination coord is in a direct direction.
   CGPoint diff = ccpSub(destinationCoord, startCoord);
-  CGPoint increment = CGPointZero;
-  if (diff.x != 0) {
-    increment = CGPointMake(diff.x / abs(diff.x), 0);
-  }else if (diff.y != 0) {
-    increment = CGPointMake(0, diff.y / abs(diff.y));
-  }
+  CGPoint tileIncrement = [DSCocosHelpers tileCoordDiffForDirection:direction];
   
   CGPoint prevTileCoord = startCoord;
   for (int i = 0; i < abs(diff.y + diff.x); i++) {
-    CGPoint currentTileCoord = ccpAdd(prevTileCoord, increment);
+    CGPoint currentTileCoord = ccpAdd(prevTileCoord, tileIncrement);
     
     // If we find a blocked tile on the way to target, we return the closest
     // point that the character can travel to in the last tile (which is valid)
@@ -364,34 +371,39 @@
     // If next tile (or its adjacent one if we are walking on it) is block,
     // then we return the best walkable position
     if (isBlocked) {
-      return [self bestWalkablePositionForBlockedTileCoord:currentTileCoord
-                                        inDirection:direction];
+      CGPoint best = [self bestWalkablePositionForBlockedTileCoord:currentTileCoord
+                                                       inDirection:direction];
+      if (best.x > 98 && best.x < 103 && best.y > 126.00 && 128.00 < 131) {
+        NSLog(@"HALT!");
+      }
+      NSLog(@"adjsuted best walk target is (%.2f, %.2f) vs (%.2f, %.2f)", best.x, best.y, target.x, target.y);
+      return best;
     }
     
     prevTileCoord = currentTileCoord;
   }
   
   // Lastly we need to check if the final position's bounding box intersets with the next tile
-  CGRect targetBoundingBox = CGRectMake(target.x - self.feetRect.size.width / 2,
-                                        target.y - self.feetRect.size.height,
-                                        self.feetRect.size.width,
-                                        self.feetRect.size.height);
-  CGPoint nextTileCoord = prevTileCoord;
+  CGRect feedBox = self.feetRect;
+  CGRect targetBoundingBox = CGRectMake(target.x - feedBox.size.width * 0.5,
+                                        target.y - feedBox.size.height,
+                                        feedBox.size.width,
+                                        feedBox.size.height);
+  CGPoint nextTileCoord = ccpAdd(destinationCoord, tileIncrement);
   
   
   /**
-   * If our target position's bounding box intersects with the next tile coord 
-   * in the walking direction, and the next tile is also blocked then we adjust 
-   * our final position to the closest position to the next blocked tile.
+   * If our target position's final bounding box intersects with the next tile coord
+   * in the walking direction, and the next tile (or its adjacent tile if the
+   * character started on stepping on an adjacent tile) is also blocked then we
+   * adjust our final position to the closest position to the next tile.
    *
-   * Furthermore, if our character is stepping on an adjacent tile when walking
-   * then we need to check for that adjacent tile as well in the final tile.
-   *
-   * This happens when our target desstination's point is in a valid tile but
+   * This happens when our target destination point is in a valid tile but
    * our character's feet bounding box interests with the next tileCoordinate which
    * just happens to be blocked.
-   * this assumes that of course our characters bounding box will never insets
-   * with more than 2 tiles in one direction. 
+   *
+   * This assumes that of course our characters bounding box will never insets
+   * with more than 2 tiles in one direction or else this implementation fails.
    * In our case since our character's width is 32px and a tile's width is also 
    * 32px there's no way we can interest 3 tiles in one direction.
    */
@@ -399,6 +411,7 @@
   BOOL charIntersetsNext = [DSCocosHelpers rectIntersectsWithTileCoord:nextTileCoord
                                                                   rect:targetBoundingBox
                                                              onTileMap:tileMap];
+  
   if (charIntersetsNext) {
     BOOL requireAdjustment = NO;
     if ([self.mapLayer isTileCoordBlocked:nextTileCoord]) {
@@ -409,14 +422,18 @@
     }
     
     if (requireAdjustment) {
-      return [self bestWalkablePositionForBlockedTileCoord:nextTileCoord
-                                               inDirection:direction];
+      CGPoint best = [self bestWalkablePositionForBlockedTileCoord:nextTileCoord
+                                                       inDirection:direction];
+      NSLog(@"adjsuted best walk target is (%.2f, %.2f) vs (%.2f, %.2f)", best.x, best.y, target.x, target.y);
+      
+      return best;
     }
   }
 
   // If we get there then we have no blocked tiles to our target and our
   // bounding box at our target also does not interests with any blocked tiles.
   // In this case we safely return the target pos
+  NSLog(@"final position of (%.2f, %.2f) not adjusted", target.x, target.y);
   return target;
 }
 
@@ -441,14 +458,14 @@
   }
   else if (direction == kDirectionEast)
   {
-    CGFloat newX = blockTileCoordRect.origin.x - self.feetRect.size.width / 2;
+    CGFloat newX = blockTileCoordRect.origin.x - self.feetRect.size.width * 0.5;
     return CGPointMake(newX, sourcePos.y);
   }
   else if (direction == kDirectionWest)
   {
     CGFloat newX = blockTileCoordRect.origin.x + \
                    blockTileCoordRect.size.width + \
-                   self.feetRect.size.width / 2;
+                   self.feetRect.size.width * 0.5;
     return CGPointMake(newX, sourcePos.y);
   }
 

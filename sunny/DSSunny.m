@@ -49,7 +49,6 @@
       // Take one step to that direciton
       [self takeSteps:1 towardsDirection:direction];
       self.currentStepTimer = kCharacterSpeedPerStep;
-      NSLog(@"moveing player one step to direction");
     }else {
       // Add timer towards our first step
       self.currentStepTimer -= dt;
