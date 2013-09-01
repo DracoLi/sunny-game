@@ -10,6 +10,7 @@
 
 @interface DSCocosHelpers : NSObject
 
+// Tilemap related
 + (CGPoint)tileCoordForPosition:(CGPoint)position
                         tileMap:(CCTMXTiledMap *)tileMap;
 
@@ -19,12 +20,18 @@
                                rect:(CGRect)rect
                           onTileMap:(CCTMXTiledMap *)tileMap;
 
++ (CGRect)rectFromObjectDictionary:(NSDictionary *)dictionary;
+
 
 // Direction related
 + (Direction)directionToPosition:(CGPoint)fromPos fromPosition:(CGPoint)toPos;
 + (NSString *)stringFromDirection:(Direction)direction;
 + (CGPoint)tileCoordDiffForDirection:(Direction)direction;
 + (CGPoint)positionDiffForDirection:(Direction)direction;
++ (CGPoint)closestPostionForDirection:(Direction)direction
+                                   p1:(CGPoint)p1
+                                   p2:(CGPoint)p2;
+
 
 /**
  * Check if target potion is in a direct direction from the source position

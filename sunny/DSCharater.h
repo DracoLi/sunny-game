@@ -49,8 +49,11 @@
 // Makes the character jump
 - (void)jump;
 
-// This animates a ballon on the character's head
-- (void)showBallon:(BallonType)ballon;
+// This animates a balloon on the character's head
+- (void)showBalloon:(BalloonType)balloonType
+       forDuration:(ccTime)duration
+          animated:(BOOL)animated
+   speedMultiplier:(CGFloat)multiplier;
 
 // Called every screen update interval
 - (void)update:(ccTime)dt;

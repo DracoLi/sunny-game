@@ -30,6 +30,8 @@
                              onMapLayer:layer];
   if (self) {
     // Other sunny initializations
+    self.controllable = YES;
+    self.walkingDisabled = NO;
   }
   return self;
 }
@@ -38,7 +40,8 @@
 {
   [super update:dt];
   
-  if (self.mapLayer.isTouching) {
+  // Handle sunny walking via touch
+  if (self.mapLayer.isTouching && self.controllable && !self.walkingDisabled) {
     CGPoint touchLocation = self.mapLayer.currentTouchLocation;
     
     // Determine the touch direction

@@ -10,7 +10,6 @@
 #import "DSSunny.h"
 
 @interface SceneOneLayer ()
-@property (nonatomic) CGSize tileSize;
 @property (nonatomic, strong) DSSunny *sunny;
 @end
 
@@ -26,31 +25,27 @@
 
 - (id)init
 {
-  self = [super init];
+  self = [super initWithTileMapName:@"sunny-room"];
   if (self) {
-    // Load in map and set in helper vars
-    self.tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"sunny-room.tmx"];
-    self.tileMap.anchorPoint = ccp(0,0);
-    [self.tileMap setScale:kGameScale];
-    [self addChild:self.tileMap z:-1];
-    self.metaLayer = [self.tileMap layerNamed:@"meta"];
-    self.metaLayer.visible = NO;
-    self.tileSize = self.tileMap.tileSize;
-    
-    // Load in batch node
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"main-chars.plist"];
-    self.characterLayer = [CCSpriteBatchNode batchNodeWithFile:@"main-chars.png"
-                                                  capacity:50];
-    [self addChild:self.characterLayer z:kDefaultCharacterIndex];
-    
-    // Load in sunny and sunny mom
-    self.sunny = [DSSunny characterAtPos:CGPointMake(340, 80) onMapLayer:self];
+    // Load in sunny and add it to map
+    _sunny = [DSSunny characterAtPos:CGPointMake(340, 80) onMapLayer:self];
+    _sunny.walkingDisabled = NO;
+    [self.tileMap addChild:_sunny.sprite z:kCharacterZIndex];
   }
   return self;
 }
 
 
 #pragma mark - Touch Delegate
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  [super ccTouchesBegan:touches withEvent:event];
+//  [self.sunny jump];
+  int randBallon = arc4random_uniform(kBallonTypeMAX);
+//  [self.sunny showBalloon:randBallon
+//              forDuration:2.0 animated:YES speedMultiplier:1.0];
+}
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -69,6 +64,7 @@
 {
   [super update:delta];
   
+  // Update sunny's walk animation
   [self.sunny update:delta];
 }
 

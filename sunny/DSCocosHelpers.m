@@ -39,6 +39,15 @@
   return CGRectIntersectsRect(rect, tileCoordRect);
 }
 
++ (CGRect)rectFromObjectDictionary:(NSDictionary *)dictionary
+{
+  float x = [[dictionary valueForKey:@"x"] floatValue];
+  float y = [[dictionary valueForKey:@"y"] floatValue];
+  float width = [[dictionary valueForKey:@"width"] floatValue];
+  float height = [[dictionary valueForKey:@"height"] floatValue];
+  return CGRectMake(x, y, width, height);
+}
+
 #pragma mark - Direction Helpers
 
 + (Direction)directionToPosition:(CGPoint)toPos fromPosition:(CGPoint)fromPos
@@ -102,6 +111,42 @@
       return CGPointMake(-1, 0);
     default:
       [NSException raise:@"Invalid Argument" format:@"Bad direction provided"];
+  }
+}
+
++ (CGPoint)closestPostionForDirection:(Direction)direction
+              
+                                   p1:(CGPoint)p1
+                                   p2:(CGPoint)p2
+{
+  switch (direction) {
+    case kDirectionNorth:
+      if (p1.y < p2.y) {
+        return p1;
+      }else {
+        return p2;
+      }
+    
+    case kDirectionEast:
+      if (p1.x < p2.x) {
+        return p1;
+      }else {
+        return p2;
+      }
+    case kDirectionSouth:
+      if (p1.y > p2.y) {
+        return p1;
+      }else {
+        return p2;
+      }
+    case kDirectionWest:
+      if (p1.x > p2.x) {
+        return p1;
+      }else {
+        return p2;
+      }
+    default:
+      [NSException raise:@"Invalid Direction" format:@"wrong direction bro!"];
   }
 }
 

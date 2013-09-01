@@ -15,6 +15,7 @@
 // Can sunny be controlled right now?
 @property (nonatomic) BOOL controllable;
 
+@property (nonatomic) BOOL walkingDisabled;
 
 + (id)characterAtPos:(CGPoint)pos
           onMapLayer:(DSLayer *)layer;

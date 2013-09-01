@@ -11,11 +11,14 @@
 #define kShouldPlayWalkAnimationWhenBlocked YES
 
 
-#define kDefaultCharacterIndex 2
 #define kGameScale 1
 
 
 ////// Character Contants //////
+#define kCharacterZIndex 2
+
+#define kCharacterJumpHeight  15 // In points
+#define kCharacterJumpSpeed   0.23
 
 // A character's default travel distance per step
 #define kCharacterDistancePerStep 18
@@ -27,7 +30,7 @@
 #define kCharacterWalkAnimationFrames  3
 
 typedef enum {
-  kBallonTypeExclaimation,
+  kBallonTypeExclaimation = 0,
   kBallonTypeQuestion,
   kBallonTypeMusic,
   kBallonTypeHeart,
@@ -36,8 +39,9 @@ typedef enum {
   kBallonTypeConfused,
   kBallonTypeDotDot,
   kBallonTypeLightBulb,
-  kBallonTypeSleeping
-} BallonType;
+  kBallonTypeSleeping,
+  kBallonTypeMAX
+} BalloonType;
 
 typedef enum {
   kDirectionNorth = 0,
