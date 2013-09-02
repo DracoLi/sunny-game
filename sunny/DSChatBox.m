@@ -84,6 +84,11 @@
   [self setVisible:YES];
 }
 
+- (void)startBlinking
+{
+  
+}
+
 
 #pragma mark - Delegate for auto type label
 
@@ -95,9 +100,18 @@
   }
   
   // Animate arrow cursor blinking
-  id blink = [CCBlink actionWithDuration:5.0 blinks:5];
-  [self.arrowCursor runAction:[CCRepeatForever actionWithAction:blink]];
-//  self.arrowCursor.visible = YES; // this results in an quick blink in the beginning
+  // Since there a delay when using use ccblink, we animate the first blink
+  // separately using a delay and then start our inifinite blinking in a callblock
+  // See issue #2
+  id blink = [CCBlink actionWithDuration:5.0 blinks:5.0 / kChatBoxCursorBlinkFrequency];
+  __block CCSprite *weakCursor = self.arrowCursor;
+  id blinkCallBlock = [CCCallBlock actionWithBlock:^() {
+    [weakCursor runAction:[CCRepeatForever actionWithAction:blink]];
+  }];
+  self.arrowCursor.visible = YES; // this results in starting the blink visible
+  [self.arrowCursor runAction:[CCSequence actions:
+                               [CCDelayTime actionWithDuration:kChatBoxCursorBlinkFrequency / 2],
+                               blinkCallBlock, nil]];
 }
 
 @end

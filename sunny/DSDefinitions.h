@@ -14,7 +14,7 @@
 #define kGameScale 1
 
 #define kChatBoxZIndex 10
-
+#define kChatBoxCursorBlinkFrequency 1 
 
 ////// Character Contants //////
 #define kCharacterZIndex 2

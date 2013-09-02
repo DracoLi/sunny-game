@@ -225,7 +225,7 @@
                                     position:self.sprite.position];
   id moveUp = [CCMoveBy actionWithDuration:kCharacterJumpSpeed/2
                                   position:CGPointMake(0, kCharacterJumpHeight)];
-  __weak DSCharater *weakSelf = self;
+  __block DSCharater *weakSelf = self;
   CCCallBlock *final = [CCCallBlock actionWithBlock:^(){
     weakSelf.isJumping = NO;
   }];
