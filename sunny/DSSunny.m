@@ -9,6 +9,7 @@
 #import "DSSunny.h"
 #import "DSLayer.h"
 #import "DSCocosHelpers.h"
+#import "DSChatBox.h"
 
 @interface DSSunny ()
 @property (nonatomic) ccTime currentStepTimer;
@@ -30,6 +31,7 @@
                              onMapLayer:layer];
   if (self) {
     // Other sunny initializations
+    self.name = @"Sunny";
     self.controllable = YES;
     self.walkingDisabled = NO;
   }
@@ -41,7 +43,10 @@
   [super update:dt];
   
   // Handle sunny walking via touch
-  if (self.mapLayer.isTouching && self.controllable && !self.walkingDisabled) {
+  if (self.mapLayer.isTouching &&
+      self.controllable &&
+      !self.walkingDisabled &&
+      !self.mapLayer.chatbox.visible) {
     CGPoint touchLocation = self.mapLayer.currentTouchLocation;
     
     // Determine the touch direction

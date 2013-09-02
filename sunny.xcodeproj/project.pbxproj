@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D417FCC817D3F6D8000262BE /* DSChatBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D417FCC717D3F6D8000262BE /* DSChatBox.m */; };
+		D417FCCB17D40166000262BE /* CCSprite+GLBoxes.m in Sources */ = {isa = PBXBuildFile; fileRef = D417FCCA17D40166000262BE /* CCSprite+GLBoxes.m */; };
+		D417FCCF17D40750000262BE /* CCAutoTypeLabelBM.m in Sources */ = {isa = PBXBuildFile; fileRef = D417FCCE17D40750000262BE /* CCAutoTypeLabelBM.m */; };
+		D417FCD217D519DD000262BE /* 8bit-20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = D417FCD017D519DD000262BE /* 8bit-20.fnt */; };
+		D417FCD317D519DD000262BE /* 8bit-20.png in Resources */ = {isa = PBXBuildFile; fileRef = D417FCD117D519DD000262BE /* 8bit-20.png */; };
+		D417FCD617D5273F000262BE /* other-images.plist in Resources */ = {isa = PBXBuildFile; fileRef = D417FCD417D5273F000262BE /* other-images.plist */; };
+		D417FCD717D5273F000262BE /* other-images.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = D417FCD517D5273F000262BE /* other-images.pvr.ccz */; };
 		D49F925617C314EF0096A4EE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49F925517C314EF0096A4EE /* QuartzCore.framework */; };
 		D49F925817C314EF0096A4EE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49F925717C314EF0096A4EE /* OpenGLES.framework */; };
 		D49F925A17C314EF0096A4EE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49F925917C314EF0096A4EE /* OpenAL.framework */; };
@@ -173,6 +180,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D417FCC617D3F6D8000262BE /* DSChatBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChatBox.h; sourceTree = "<group>"; };
+		D417FCC717D3F6D8000262BE /* DSChatBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChatBox.m; sourceTree = "<group>"; };
+		D417FCC917D40166000262BE /* CCSprite+GLBoxes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCSprite+GLBoxes.h"; sourceTree = "<group>"; };
+		D417FCCA17D40166000262BE /* CCSprite+GLBoxes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCSprite+GLBoxes.m"; sourceTree = "<group>"; };
+		D417FCCD17D40750000262BE /* CCAutoTypeLabelBM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAutoTypeLabelBM.h; sourceTree = "<group>"; };
+		D417FCCE17D40750000262BE /* CCAutoTypeLabelBM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAutoTypeLabelBM.m; sourceTree = "<group>"; };
+		D417FCD017D519DD000262BE /* 8bit-20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "8bit-20.fnt"; sourceTree = "<group>"; };
+		D417FCD117D519DD000262BE /* 8bit-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8bit-20.png"; sourceTree = "<group>"; };
+		D417FCD417D5273F000262BE /* other-images.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "other-images.plist"; sourceTree = "<group>"; };
+		D417FCD517D5273F000262BE /* other-images.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "other-images.pvr.ccz"; sourceTree = "<group>"; };
 		D49F925217C314EF0096A4EE /* sunny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sunny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49F925517C314EF0096A4EE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D49F925717C314EF0096A4EE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -511,6 +528,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D417FCCC17D40741000262BE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D417FCCD17D40750000262BE /* CCAutoTypeLabelBM.h */,
+				D417FCCE17D40750000262BE /* CCAutoTypeLabelBM.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		D49F924917C314EF0096A4EE = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +575,7 @@
 		D49F926917C314EF0096A4EE /* sunny */ = {
 			isa = PBXGroup;
 			children = (
+				D417FCCC17D40741000262BE /* Tools */,
 				D49F98A417C3237B0096A4EE /* DSDefinitions.h */,
 				D4A0D60C17C9AED300F4A6D1 /* Categories */,
 				D49F989D17C321E80096A4EE /* Characters */,
@@ -557,6 +584,8 @@
 				D49F93FB17C314F20096A4EE /* AppDelegate.m */,
 				D49F940017C314F20096A4EE /* IntroLayer.h */,
 				D49F940117C314F20096A4EE /* IntroLayer.m */,
+				D417FCC617D3F6D8000262BE /* DSChatBox.h */,
+				D417FCC717D3F6D8000262BE /* DSChatBox.m */,
 				D49F926A17C314EF0096A4EE /* Resources */,
 				D49F93F617C314F20096A4EE /* Supporting Files */,
 				D4A0D60617C70F9300F4A6D1 /* DSCocosHelpers.h */,
@@ -582,6 +611,8 @@
 				D49F927B17C314EF0096A4EE /* Icon.png */,
 				D49F927D17C314EF0096A4EE /* Icon@2x.png */,
 				D49F927F17C314EF0096A4EE /* Info.plist */,
+				D417FCD017D519DD000262BE /* 8bit-20.fnt */,
+				D417FCD117D519DD000262BE /* 8bit-20.png */,
 				D49F928017C314EF0096A4EE /* iTunesArtwork */,
 			);
 			name = Resources;
@@ -992,6 +1023,8 @@
 				D4A0D60E17C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m */,
 				D4A0D60F17C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.h */,
 				D4A0D61017C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m */,
+				D417FCC917D40166000262BE /* CCSprite+GLBoxes.h */,
+				D417FCCA17D40166000262BE /* CCSprite+GLBoxes.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -999,6 +1032,8 @@
 		D4A0D61317C9BBCF00F4A6D1 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				D417FCD417D5273F000262BE /* other-images.plist */,
+				D417FCD517D5273F000262BE /* other-images.pvr.ccz */,
 				D4D34E1417CEECE7006D92BB /* balloon.plist */,
 				D4D34E1517CEECE7006D92BB /* balloon.png */,
 				D4A0D61417C9BBCF00F4A6D1 /* main-chars.plist */,
@@ -1097,6 +1132,10 @@
 				D4A0D61717C9BBCF00F4A6D1 /* main-chars.png in Resources */,
 				D4D34E1617CEECE7006D92BB /* balloon.plist in Resources */,
 				D4D34E1717CEECE7006D92BB /* balloon.png in Resources */,
+				D417FCD217D519DD000262BE /* 8bit-20.fnt in Resources */,
+				D417FCD317D519DD000262BE /* 8bit-20.png in Resources */,
+				D417FCD617D5273F000262BE /* other-images.plist in Resources */,
+				D417FCD717D5273F000262BE /* other-images.pvr.ccz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1118,6 +1157,9 @@
 				D4A0D61117C9AEDD00F4A6D1 /* CCAnimate+SequenceLoader.m in Sources */,
 				D4A0D61217C9AEDD00F4A6D1 /* CCAnimation+SequenceLoader.m in Sources */,
 				D4D34E1A17CFDE9D006D92BB /* DSControlLayer.m in Sources */,
+				D417FCC817D3F6D8000262BE /* DSChatBox.m in Sources */,
+				D417FCCB17D40166000262BE /* CCSprite+GLBoxes.m in Sources */,
+				D417FCCF17D40750000262BE /* CCAutoTypeLabelBM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "DSLayer.h"
 #import "DSCharater.h"
 #import "DSCocosHelpers.h"
+#import "DSChatBox.h"
 
 @interface DSLayer ()
 @property (nonatomic, strong) CCTMXLayer *metaLayer;
@@ -40,6 +41,7 @@
     
     // We should have our main characters in every scene, so we load them by default
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"main-chars.plist"];
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"other-images.plist"];
     
     // By default our character is below foreground unless otherwise told so
     _foregroundLayer = [self.tileMap layerNamed:@"foreground"];
@@ -134,6 +136,23 @@
   return NO;
 }
 
+- (void)showChatBox
+{
+  if (!self.chatbox.parent) {
+    [self addChild:self.chatbox z:kChatBoxZIndex];
+  }
+  
+  [self.chatbox advanceTextOrFinish];
+}
+
+- (void)cleanupChatBox
+{
+  if (self.chatbox && self.chatbox.parent) {
+    [self removeChild:self.chatbox cleanup:YES];
+    self.chatbox.visible = NO;
+  }
+}
+
 - (void)update:(ccTime)delta
 {
   [super update:delta];
@@ -144,6 +163,12 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+  if(self.chatbox && self.chatbox.visible)
+  {
+    [self.chatbox advanceTextOrFinish];
+    return;
+  }
+  
   // Update current touch location
   UITouch *touch = [touches anyObject];
   CGPoint touchLocation = [[CCDirector sharedDirector] convertTouchToGL:touch];

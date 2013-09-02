@@ -13,7 +13,7 @@
 
 @interface DSCharater : CCNode
 
-@property (nonatomic, copy) NSString *characterName;
+@property (nonatomic, copy) NSString *name;
 @property (nonatomic, weak) DSLayer *mapLayer;
 @property (nonatomic, strong) CCSprite *sprite;
 @property (nonatomic) Direction direction;
@@ -34,6 +34,11 @@
 - (void)goToTarget:(CGPoint)target;
 - (void)goToTarget:(CGPoint)target withSpeedMultiplier:(CGFloat)multiplier;
 - (void)takeSteps:(NSInteger)steps towardsDirection:(Direction)direction;
+
+/**
+ * Talking related methods
+ */
+- (void)sayWords:(NSString *)words;
 
 /**
  * Our base walk method. All character moving methods call this to walk.

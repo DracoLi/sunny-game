@@ -8,13 +8,14 @@
 
 #import "cocos2d.h"
 
-@class DSCharater;
+@class DSCharater, DSChatBox;
 
 @interface DSLayer : CCLayer
 @property (nonatomic, strong) CCTMXTiledMap *tileMap;
 @property (nonatomic, strong) CCTMXLayer *foregroundLayer;
 @property (nonatomic) CGSize tileSize;
 @property (nonatomic, strong) CCSpriteBatchNode *batchNode;
+@property (nonatomic, strong) DSChatBox *chatbox;
 
 // Touch related
 @property (nonatomic) BOOL isTouching;
@@ -39,5 +40,9 @@
  * Returns true if a tile coordinate is blocked, not factoring if its disabled
  */
 - (BOOL)isTileCoordBlocked:(CGPoint)tileCoord;
+
+
+- (void)showChatBox;
+- (void)cleanupChatBox;
 
 @end

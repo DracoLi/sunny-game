@@ -8,6 +8,7 @@
 
 #import "SceneOneLayer.h"
 #import "DSSunny.h"
+#import "DSChatBox.h"
 
 @interface SceneOneLayer ()
 @property (nonatomic, strong) DSSunny *sunny;
@@ -58,6 +59,9 @@
   
   // Test walking
 //  [self.sunny animateWalkInSamePosition];
+  if (!self.chatbox.visible) {
+    [self.sunny sayWords:@"I like chicken and I cannot lie!\nDo you like chicken?\nOkay I should stop now lol"];
+  }
 }
 
 - (void)update:(ccTime)delta

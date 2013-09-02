@@ -10,6 +10,7 @@
 #import "DSLayer.h"
 #import "DSCocosHelpers.h"
 #import "CCAnimate+SequenceLoader.h"
+#import "DSChatBox.h"
 
 @interface DSCharater ()
 
@@ -283,6 +284,21 @@
 - (void)stopAllAnimations
 {
   [self.sprite stopAllActions];
+}
+
+
+#pragma mark - Talking related methods
+
+- (void)sayWords:(NSString *)words
+{
+  // Remove any existing chatboxes
+  [self.mapLayer cleanupChatBox];
+  
+  // Create and show new chatbox
+  self.mapLayer.chatbox = [[DSChatBox alloc] initWithCharacter:self
+                                                          text:words
+                                                         layer:self.mapLayer];
+  [self.mapLayer showChatBox];
 }
 
 

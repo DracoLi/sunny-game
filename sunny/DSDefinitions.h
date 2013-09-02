@@ -13,6 +13,8 @@
 
 #define kGameScale 1
 
+#define kChatBoxZIndex 10
+
 
 ////// Character Contants //////
 #define kCharacterZIndex 2
