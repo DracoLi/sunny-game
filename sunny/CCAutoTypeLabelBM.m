@@ -12,6 +12,13 @@
 
 - (void) typeText:(NSString*) txt withDelay:(float) d
 {
+  // Handle issuing a new command before our previous type text finishes
+  if ([self numberOfRunningActions] > 0) {
+    [self stopAllActions];
+    [self unschedule:@selector(finishCheck:)];
+    [self done:self];
+  }
+  
   _arrayOfCharacters = [[NSMutableArray alloc]init];
   _autoTypeString = [[NSString alloc]initWithString:txt];
   
