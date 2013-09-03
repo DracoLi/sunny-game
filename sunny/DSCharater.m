@@ -289,15 +289,14 @@
 
 #pragma mark - Talking related methods
 
-- (void)sayWords:(NSString *)words
+- (void)sayWords:(NSArray *)words
 {
   // Remove any existing chatboxes
-  [self.mapLayer cleanupChatBox];
+  [self.mapLayer dismissChatBox];
   
   // Create and show new chatbox
   self.mapLayer.chatbox = [[DSChatBox alloc] initWithCharacter:self
-                                                          text:words
-                                                         layer:self.mapLayer];
+                                                          words:words];
   [self.mapLayer showChatBox];
 }
 

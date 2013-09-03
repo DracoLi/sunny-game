@@ -145,7 +145,7 @@
   [self.chatbox advanceTextOrFinish];
 }
 
-- (void)cleanupChatBox
+- (void)dismissChatBox
 {
   if (self.chatbox && self.chatbox.parent) {
     [self removeChild:self.chatbox cleanup:YES];
@@ -163,12 +163,6 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  if(self.chatbox && self.chatbox.visible)
-  {
-    [self.chatbox advanceTextOrFinish];
-    return;
-  }
-  
   // Update current touch location
   UITouch *touch = [touches anyObject];
   CGPoint touchLocation = [[CCDirector sharedDirector] convertTouchToGL:touch];
@@ -185,6 +179,7 @@
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+  
 }
 
 @end

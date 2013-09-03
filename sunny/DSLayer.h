@@ -41,8 +41,10 @@
  */
 - (BOOL)isTileCoordBlocked:(CGPoint)tileCoord;
 
-
+/**
+ * Chat box related
+ */
 - (void)showChatBox;
-- (void)cleanupChatBox;
+- (void)dismissChatBox;
 
 @end

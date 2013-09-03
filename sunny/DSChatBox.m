@@ -14,18 +14,36 @@
 @property (nonatomic, strong) NSMutableArray *textArray;
 @property (nonatomic, strong) CCAutoTypeLabelBM *label;
 @property (nonatomic, strong) CCSprite *arrowCursor;
+@property (nonatomic, strong) DSChoiceDialog *dialog;
+@property (nonatomic) CGSize dialogSize;
+
+- (void)showChoiceDialog;
 @end
 
 @implementation DSChatBox
 
 - (id)initWithCharacter:(DSCharater *)character
-                   text:(NSString *)text
-                  layer:(CCLayer *)layer
+                  words:(NSArray *)words
+{
+  if (self = [self initWithCharacter:character
+                               words:words
+                             choices:nil
+                          dialogSize:CGSizeZero]) {
+  }
+  return self;
+}
+
+- (id)initWithCharacter:(DSCharater *)character
+                  words:(NSArray *)words
+                choices:(NSArray *)choices
+             dialogSize:(CGSize)size
 {
   if (self = [super init])
   {
     _character = character;
-    _textArray = [[text componentsSeparatedByString:@"\n"] mutableCopy];
+    _textArray = [words mutableCopy];
+    _choices = choices;
+    _dialogSize = size;
     
     // Add background
     CCSprite *bg = [CCSprite rectangleOfSize:CGSizeMake(480, 40)
@@ -52,8 +70,9 @@
       [self addChild:_arrowCursor z:2];
     }
     
-    // Add chat box to map
-    [layer addChild:self z:kChatBoxZIndex];
+    // Responds to touch
+    [[[CCDirector sharedDirector] touchDispatcher]
+     addTargetedDelegate:self priority:kSelectableLabelTouchPriority + 1 swallowsTouches:YES];
   }
   return self;
 }
@@ -69,8 +88,7 @@
   // Close text box when no more text to display
   if(self.textArray.count == 0)
   {
-    [self setVisible:NO];
-    [self.parent removeChild:self cleanup:YES];
+    [self removeChatBox];
     return;
   }
   
@@ -82,11 +100,32 @@
   NSString *message = [NSString stringWithFormat:@"%@: %@", self.character.name, text];
   [self.label typeText:message withDelay:0.02f];
   [self setVisible:YES];
+  
+  // Check if we need to display any choice dialogs
+  if (self.textArray.count == 0 && self.choices && self.choices.count > 0) {
+    [self showChoiceDialog];
+  }
 }
 
-- (void)startBlinking
+- (void)showChoiceDialog
 {
+  self.dialog = [[DSChoiceDialog alloc] initWithChoices:self.choices
+                                                   size:self.dialogSize];
+  self.dialog.anchorPoint = ccp(0, 0);
+  self.dialog.position = ccp(5, 100);
+  self.dialog.delegate = self;
+  [self addChild:self.dialog z:2];
+}
+
+- (void)removeChatBox
+{
+  self.visible = NO;
+  [self.parent removeChild:self cleanup:YES];
   
+  // Remove any delegate references
+  if (self.dialog) {
+    self.dialog.delegate = nil;
+  }
 }
 
 
@@ -112,6 +151,35 @@
   [self.arrowCursor runAction:[CCSequence actions:
                                [CCDelayTime actionWithDuration:kChatBoxCursorBlinkFrequency / 2],
                                blinkCallBlock, nil]];
+}
+
+
+#pragma mark - DSChoiceDialog Delegate
+
+- (void)choiceDialogLabelSelected:(DSChoiceDialog *)sender
+                        labelText:(NSString *)text
+                      choiceIndex:(NSUInteger)index
+{
+  CCLOG(@"choice dialog selected with text: %@ - index: %i", text, index);
+  
+  [self removeChatBox];
+  
+  if (self.delegate &&
+      [self.delegate respondsToSelector:@selector(chatboxFinished:withChoiceText:choiceIndex:)])
+  {
+    [self.delegate chatboxFinished:self withChoiceText:text choiceIndex:index];
+  }
+}
+
+
+#pragma mark - CCTouchOneByOneDelegate
+
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+  if (self.visible && !self.dialog) {
+    [self advanceTextOrFinish];
+  }
+  return YES;
 }
 
 @end

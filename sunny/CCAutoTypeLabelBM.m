@@ -11,7 +11,7 @@
 @implementation CCAutoTypeLabelBM
 
 - (void) typeText:(NSString*) txt withDelay:(float) d
-{    
+{
   _arrayOfCharacters = [[NSMutableArray alloc]init];
   _autoTypeString = [[NSString alloc]initWithString:txt];
   

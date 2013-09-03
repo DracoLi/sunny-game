@@ -38,7 +38,7 @@
 /**
  * Talking related methods
  */
-- (void)sayWords:(NSString *)words;
+- (void)sayWords:(NSArray *)words;
 
 /**
  * Our base walk method. All character moving methods call this to walk.

@@ -19,8 +19,8 @@
 
 @interface CCAutoTypeLabelBM : CCLabelBMFont
 @property (readwrite, weak) NSObject<CCAutoTypeLabelBMDelegate> *delegate;
-@property (nonatomic, retain) NSMutableArray *arrayOfCharacters;
-@property (nonatomic, retain) NSString *autoTypeString;
+@property (nonatomic, strong) NSMutableArray *arrayOfCharacters;
+@property (nonatomic, strong) NSString *autoTypeString;
 
 - (void) typeText:(NSString*) txt withDelay:(float) d;
 
